@@ -1,0 +1,28 @@
+Dockerfile
+
+*test_*.py
+
+# Ignore files from .gitignore
+.git
+.gitignore
+
+# Ignore Python cache files
+__pycache__/
+*.pyc
+*.pyo
+
+# Ignore virtual environments
+venv/
+.env/
+
+# Ignore build artifacts
+build/
+dist/
+*.egg-info/
+
+# Ignore temporary files
+*.log
+*.tmp
+
+# Ignore K8s manifests
+manifests/**

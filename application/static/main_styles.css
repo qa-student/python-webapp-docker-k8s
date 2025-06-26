@@ -23,17 +23,18 @@ footer {
    text-align: center;
 }
 
-.joke { background-color: cadetblue;
+.joke { background-color: purple;
         padding: 1%;
         color: white;
         font-family: Verdana, serif;
+        border-radius: 12px;
 }
 .question {
         font-weight: bolder;
 }
 
 .button {
-  background-color: DarkGoldenrod;
+  background-color: DarkKhaki;
   border: none;
   color: white;
   padding: 15px 32px;
@@ -45,7 +46,7 @@ footer {
 }
 
 .button:hover {
-  background-color: DarkKhaki;
+  background-color: DarkGoldenrod;
   color: white;
 }
 

@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lbgjokes
+  labels:
+    app: lbgjokes
+spec:
+  replicas: {{.Values.replicas}}
+  selector:
+    matchLabels:
+      app: lbgjokes
+      
+  template:
+    metadata:
+      labels:
+        app: lbgjokes
+        tier: lbgjokes
+    spec:
+      automountServiceAccountToken: false
+      containers:
+        - name: lbgjokes
+          image: {{.Values.image}}
+          imagePullPolicy: Always
+          resources:
+            requests:
+              memory: "16Mi"
+              cpu: "100m"
+              ephemeral-storage: "500Mi"
+            limits:
+              memory: "32Mi"
+              cpu: "200m"
+              ephemeral-storage: "1Gi"
+          ports:
+          - containerPort: 5000
+            name: lbgjokes
+            
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: lbgjokes
+  labels:
+    app: lbgjokes
+spec:
+  ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 5000
+  selector:
+    app: lbgjokes
+    tier: lbgjokes
+  type: LoadBalancer
